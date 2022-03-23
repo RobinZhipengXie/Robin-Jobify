@@ -12,7 +12,7 @@ const Landing = () => {
       <div className='container page'>
         <div className='info'>
           <h1>
-            a Job <span>tracking</span> web
+            a Job <span>tracking</span> website
           </h1>
           <p>
             This website helps with tracking jobs during your job hunting.
