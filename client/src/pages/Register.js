@@ -13,7 +13,7 @@ const initialState = {
 const Register = () => {
   const navigate = useNavigate()
   const [values, setValues] = useState(initialState)
-  const { user, isLoading, showAlert, displayAlert, registerUser, loginUser } =
+  const { user, isLoading, showAlert, displayAlert, setupUser } =
     useAppContext()
 
   const toggleMember = () => {
@@ -32,11 +32,18 @@ const Register = () => {
     }
     const currentUser = { name, email, password }
     if (isMember) {
-      loginUser(currentUser)
+      setupUser({
+        currentUser,
+        endPoint: 'login',
+        alertText: 'Login Successful! Redirecting...',
+      })
     } else {
-      registerUser(currentUser)
+      setupUser({
+        currentUser,
+        endPoint: 'register',
+        alertText: 'User Created! Redirecting...',
+      })
     }
-    console.log(values)
   }
 
   useEffect(() => {
@@ -53,7 +60,7 @@ const Register = () => {
         <Logo />
         <h3>{values.isMember ? 'Login' : 'Register'}</h3>
         {showAlert && <Alert />}
-        {/* {name input} */}
+        {/* name input */}
         {!values.isMember && (
           <FormRow
             type='text'
@@ -63,14 +70,14 @@ const Register = () => {
           />
         )}
 
-        {/* {email input} */}
+        {/* email input */}
         <FormRow
           type='email'
           name='email'
           value={values.email}
           handleChange={handleChange}
         />
-        {/* {password input} */}
+        {/* password input */}
         <FormRow
           type='password'
           name='password'
