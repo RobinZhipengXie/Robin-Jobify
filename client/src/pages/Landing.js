@@ -16,7 +16,8 @@ const Landing = () => {
           </h1>
           <p>
             This website helps with tracking jobs during your job hunting.
-            Please feel free to use it and good luck! Created by Robin Xie.
+            Register an account and start your journey. Please contact Robin Xie
+            for any bugs :D
           </p>
           <Link to='/register' className='btn btn-hero'>
             Login/Register
